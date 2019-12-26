@@ -1,0 +1,82 @@
+
+<p>
+  <strong>Name:</strong>
+  <%= @list.name %>
+</p>
+ 
+<p>
+  <strong>Description:</strong>
+  <%= @list.description %>
+</p>
+
+<p>
+  <strong>Completed:</strong>
+  <%= yesno(@list.completed) %>
+</p>
+
+<h2>Tasks</h2>
+<% @list.tasks.each do |task| %>
+  <p>
+    <strong>Name:</strong>
+    <%= task.name %>
+  </p>
+ 
+  <p>
+    <strong>Description:</strong>
+    <%= task.description %>
+  </p>
+
+  <p>
+    <strong>Priority:</strong>
+    <%= task.priority %>
+  </p>
+
+  <p>
+    <strong>Status:</strong>
+    <%= task.status %>
+  </p>
+
+  <p>
+    <strong>Due:</strong>
+    <%= task.due %>
+  </p>
+
+  <p>
+    <strong>Completed:</strong>
+    <%= yesno(@task.completed) %>
+  </p>
+<% end %>
+
+<h2>Add a task:</h2>
+<%= form_with(model: [ @list, @list.tasks.build ], local: true) do |form| %>
+  <p>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+  </p>
+  <p>
+    <%= form.label :description %><br>
+    <%= form.text_area :description %>
+  </p>
+  <p>
+    <%= form.label :priority %><br>
+    <%= form.select :priority, ["Critical","High","Medium","Low"]%>
+  </p>
+  <p>
+    <%= form.label :status %><br>
+    <%= form.select :status, ["New","In Progress","Requires Moderation","Finished"]%>
+  </p>
+  <p>
+    <%= form.label :due %><br>
+    <%= form.datetime_field :due %>
+  </p>
+  <p>
+    <%= form.label :completed %><br>
+    <%= form.check_box :completed, {}, true, false %> 
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
+<%= link_to 'Edit', edit_list_path(@list) %> 
+<%= link_to 'Back', lists_path %>
