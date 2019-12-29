@@ -14,11 +14,11 @@
     <tr>
       <td><%= list.name %></td>
       <td><%= list.description %></td>
-      <td><%= list.completed %></td>
+      <td><%= yesno(list.completed) %></td>
       
       <td><%= link_to 'Show', list_path(list) %></td>
       <td><%= link_to 'Edit', edit_list_path(list) %></td>
-      <td><%= button_to 'Destroy', list_path(list),
+      <td><%= button_to 'Delete', list_path(list),
               method: :delete,
               data: { confirm: 'Are you sure?' } %></td>
     </tr>
