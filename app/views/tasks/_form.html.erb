@@ -1,0 +1,30 @@
+<%= form_with(model: [ @list, @list.tasks.build ], local: true) do |form| %>
+    
+    <p>
+      <%= form.label :name %><br>
+      <%= form.text_field :name %>
+    </p>
+    <p>
+      <%= form.label :description %><br>
+      <%= form.text_area :description %>
+    </p>
+    <p>
+      <%= form.label :priority %><br>
+      <%= form.select :priority, ["Critical","High","Medium","Low"]%>
+    </p>
+    <p>
+      <%= form.label :status %><br>
+      <%= form.select :status, ["New","In Progress","Requires Moderation","Finished"]%>
+    </p>
+    <p>
+      <%= form.label :due %><br>
+      <%= form.date_field :due %>
+    </p>
+    <p>
+      <%= form.label :completed %><br>
+      <%= form.check_box :completed, {}, "true", "false" %> 
+    </p>
+    <p>
+      <%= form.submit %>
+    </p>
+  <% end %>
