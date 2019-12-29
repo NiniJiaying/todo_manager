@@ -1,0 +1,36 @@
+
+<p>
+<strong>Name:</strong>
+<%= @list.name %>
+</p>
+
+<p>
+<strong>Description:</strong>
+<%= @list.description %>
+</p>
+
+<p>
+<strong>Completed:</strong>
+<%= yesno(@list.completed) %>
+</p>
+
+<h2>Tasks</h2>
+<table border=1>
+<tr>
+  <th width=100>Name</th>
+  <th width=300>Description</th>
+  <th width=100>Priority</th>
+  <th width=100>Status</th>
+  <th width=100>Due</th>
+  <th width=100>Completed</th>
+  
+  
+</tr>
+</table>
+<%= render @list.tasks %>
+
+<h2>Add a task:</h2>
+<%= render 'tasks/form' %>
+
+<%= link_to 'Edit', edit_list_path(@list) %> 
+<%= link_to 'Back', lists_path %>

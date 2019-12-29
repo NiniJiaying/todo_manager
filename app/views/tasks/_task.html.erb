@@ -1,0 +1,16 @@
+
+<table border=1>
+    <tr>
+      <td width=100><%= task.name %></td>
+      <td width=300><%= task.description %></td>
+      <td width=100><%= task.priority %></td>
+      <td width=100><%= task.status %></td>
+      <td width=100><%= task.due %></td>
+      <td width=100><%= yesno(task.completed) %></td>
+      
+      <td><%= button_to 'Delete Task', [task.list, task],
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+
+</table>
